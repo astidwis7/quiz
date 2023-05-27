@@ -35,11 +35,11 @@ session_start();
     </div>
     <button type="submit" name = "sub" class="btn btn-primary">Submit</button>
     <br><br>
-    <p style="color:grey;">Don't have account? <a href="http://localhost/quiz/registration.php"> Register</a></p>
+    <p style="color:grey;">Don't have account? <a href="http://localhost/quiz_app/registration.php"> Register</a></p>
   </form>
 </div>
 </div>
-<div align="center" style="background:grey;     margin-top: 10px;">
+<div align="center" style="background:grey; margin-top: 10px;">
 <?php
 include("conn.php");
 if(isset($_POST['sub'])){
@@ -56,7 +56,7 @@ if(isset($_POST['sub'])){
 		
 		while($row = mysqli_fetch_assoc($data)){
       ?>
- 	      <a href = 'quiz.php/?id=<?php echo  $_SESSION['id'] =$row['id']; ?>' style="color: white;text-decoration: none;"><?php echo 'Welcome '.$user." click here";?></a>
+ 	      <a href = 'quiz_app.php/?id=<?php echo  $_SESSION['id'] =$row['id']; ?>' style="color: white;text-decoration: none;"><?php echo 'Welcome '.$user." click here";?></a>
 	<?php	}
 	}
 
