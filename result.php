@@ -72,6 +72,6 @@ error_reporting(0);
    </table>
    </div>
    <div class="card-footer text-center">
-	<a href = 'http://localhost/quiz/logout.php'>
+	<a href = 'http://localhost/quiz_app/logout.php'>
 	<button class="btn btn-primary">Log out</button></a></div>
   </div>
