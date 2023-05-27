@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(0);?>	
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Codes</title>
@@ -36,7 +36,7 @@ error_reporting(0);?>
 <?php
 include('conn.php');
 ?>
-<form action="http://localhost/quiz/result.php" method = "post">
+<form action="http://localhost/quiz_app/result.php" method = "post">
 	<?php 
     for($i=1;$i<8;$i++){
 	$sql = "select * from questions where qid =  $i";
@@ -70,7 +70,7 @@ include('conn.php');
   </form>
 </div>
 <div class="card-footer text-center">
-	<a href = 'http://localhost/quiz/logout.php'>
+	<a href = 'http://localhost/quiz_app/logout.php'>
 	<button class="btn btn-primary">Log out</button></a></div>
   </div>
 
