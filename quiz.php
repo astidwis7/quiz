@@ -1,10 +1,11 @@
 <?php
 session_start();
-error_reporting(0);?>
+error_reporting(0);
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Codes</title>
+    <title>Quiz App</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -48,44 +49,47 @@ error_reporting(0);?>
       <h2 class="text-center" style="color:white">Online Quiz</h2> 
 	  <?php echo '<h2 class="text-center blinking" style="color:white">  Welcome '.$_SESSION['user'].' take a quiz test</h2>'; ?> 
 	  <div class="card"> 
-<?php
-include('conn.php');
-?> 
-<form action="http://localhost/quiz/result.php" method="post"> 
-	<?php 
-    for($i=1;$i<8;$i++){
-	$sql = "select * from questions where qid =  $i";
-	$data = mysqli_query($conn,$sql);
-
-		while($row = mysqli_fetch_assoc($data)){
-	?> 
-	<div class="card-header text-center">
-    	<h5> <?php echo $row['question']; ?> </h5>
-    </div>
-    <div class="card-body"> 
 		<?php
-			$sql = "select * from answer where ans_id = $i";
-	$data1 = mysqli_query($conn,$sql);
+			include('conn.php');
+		?> 
+		<form action="http://localhost/quiz/result.php" method="post"> 
+			<?php 
+				for($i=1;$i<8;$i++){
+					$sql = "select * from questions where qid =  $i";
+					$data = mysqli_query($conn,$sql);
 
-		while($row = mysqli_fetch_assoc($data1)){
+					while($row = mysqli_fetch_assoc($data)){
+						?> 
+						<div class="card-header text-center">
+							<h5> <?php echo $row['question']; ?> </h5>
+						</div>
+						<div class="card-body"> 
+							<?php
+								$sql = "select * from answer where ans_id = $i";
+								$data1 = mysqli_query($conn,$sql);
+
+								while($row = mysqli_fetch_assoc($data1)){
+									?> 
+									<input type="radio" name='check[<?php echo $row['ans_id']; ?>]' value="<?php echo $row['aid']?>"> <?php echo $row['answer']?> <br> <?php
+								}
+							?>
+						</div>
+						<?php
+					}
+				}
 			?> 
-			<input type="radio" name='check[<?php echo $row['ans_id']; ?>]' value="<?php echo $row['aid']?>"> <?php echo $row['answer']?> <br> <?php
-		}
-		}
-	}
-	?> </div>
-          <div class="card-footer text-center">
-            <input type="submit" name="sub" class="btn btn-primary">
-            <br>
-            <br>
-          </div>
-        </form>
-      </div>
-      <div class="card-footer text-center">
-        <a href='http://localhost/quiz_app/logout.php'>
-          <button class="btn btn-primary">Log out</button>
-        </a>
-      </div>
+	
+			<div class="card-footer text-center">
+				<input type="submit" name="sub" class="btn btn-primary">
+				<br><br>
+			</div>
+		</form>
+		<div class="card-footer text-center">
+			<a href='logout.php'>
+				<button class="btn btn-primary">Log out</button>
+			</a>
+		</div>
+    	</div>
     </div>
   </body>
 </html>
