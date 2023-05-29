@@ -1,6 +1,6 @@
 # Quiz App
 
-Quiz App is a web-based simple quiz media.
+Quiz App is a simple web-based quiz media.
 
 Existing features include:
 - User registration page
