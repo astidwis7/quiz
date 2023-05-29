@@ -3,10 +3,10 @@
 Quiz App is a simple web-based quiz media.
 
 Existing features include:
-- User registration page
-- Login page
-- Quizzes page
-- Quiz results page
+- User registration
+- Login
+- Quiz
+- Quiz results
 
 ### Languages and Tools
 
