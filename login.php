@@ -4,7 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Codes</title>
+    <title>Quiz App</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -16,6 +16,7 @@ session_start();
     .content {
       background: url('img/cream.jpg') center / cover no-repeat;
     }
+
     .data {
       background: url('img/cream_.jpg') center / cover no-repeat;
     }
@@ -41,27 +42,29 @@ session_start();
         </form>
       </div>
     </div>
-    <div align="center" style="background:grey; margin-top: 10px;"> <?php
-include("conn.php");
-if(isset($_POST['sub'])){
-	$user =	$_POST['fname'];
-	$pass = $_POST['pass'];
+    <div align="center" style="background:grey; margin-top: 10px;"> 
+    <?php
+      include("conn.php");
+      if(isset($_POST['sub'])){
+        $user =	$_POST['fname'];
+        $pass = $_POST['pass'];
 
-	$sql = "SELECT * FROM user WHERE name = '$user' && password = '$pass'";
-	$data = mysqli_query($conn,$sql);
-	$result =  mysqli_num_rows($data);
+        $sql = "SELECT * FROM user WHERE name = '$user' && password = '$pass'";
+        $data = mysqli_query($conn,$sql);
+        $result =  mysqli_num_rows($data);
 
-	if($result == 1){
-		$_SESSION['user'] = $user;
-		$_SESSION['pass'] = $pass;
-		
-		while($row = mysqli_fetch_assoc($data)){
-      ?> <a href='quiz.php/?id=<?php echo  $_SESSION['id'] =$row['id']; ?>' style="color: white;text-decoration: none;"> <?php echo 'Welcome '.$user." click here";?> </a> <?php	}
-	}
-	else{
-		echo "user invailed";
-	}
-}
-?> </div>
+        if($result == 1){
+          $_SESSION['user'] = $user;
+          $_SESSION['pass'] = $pass;
+          
+          while($row = mysqli_fetch_assoc($data)){
+            ?> <a href='quiz.php/?id=<?php echo  $_SESSION['id'] =$row['id']; ?>' style="color: white;text-decoration: none;"> <?php echo 'Welcome '.$user." click here";?> </a> <?php	}
+        }
+        else{
+          echo "user invailed";
+        }
+      }
+    ?> 
+    </div>
   </body>
 </html>
